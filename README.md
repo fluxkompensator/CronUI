@@ -18,13 +18,13 @@ CronUI is an web-based tool based on Python Flask, jquery and bootstrap to edit,
 
 ## Installation
 
-pip install Flask
-pip install Flask-JSGlue
+* pip install Flask
+* pip install Flask-JSGlue
 
-git clone ...
+* git clone ...
 
-cd CronUI
-export FLASK_APP=index.py
+* cd CronUI
+* export FLASK_APP=index.py
 
 ## License
 
