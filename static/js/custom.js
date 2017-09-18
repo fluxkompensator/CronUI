@@ -11,7 +11,8 @@ $(document).ready(function(){
 	$(this).next().next(".cron-edit").show();
     });
 
-    $(document).on( "click", ".cron-delete", function(){
+    // "mousedown" is much better than "onclick/click" it does not interfere with "focusout"
+    $(document).on( "mousedown", ".cron-delete", function(){
 	console.log($(this));
 	$(this).prev().prev(".cron-entry").remove();
 	$(this).prev().remove();
@@ -21,9 +22,18 @@ $(document).ready(function(){
     $(".list-group").on('focusout', '.cron-edit', function(){
         console.log($(this));
         $(this).hide().prev(".cron-entry").show().text($(this).val());
-	window.setTimeout(function() { $(this).next('.cron-edit').hide() }, 100);
+	$(this).next('.cron-delete').hide();
+	$(this).next('.cron-edit').hide();
     });
 
+    $(document).on('keypress', '.cron-edit', function( event ){
+	if(event.which == 13) {
+            $(this).hide().prev(".cron-entry").show().text($(this).val());
+    	    $(this).next('.cron-delete').hide();
+    	    $(this).next('.cron-edit').hide();
+            console.log(event.which);
+	}
+    });
 
     $(function() {
         $('.save-entry-btn').click(function() {
