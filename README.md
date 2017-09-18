@@ -2,6 +2,7 @@ CronUI
 ======
 
 CronUI is an web-based tool based on Python Flask, jquery and bootstrap to edit, delete and create cron jobs.
+![alt text](https://raw.githubusercontent.com/fluxkompensator/CronUI/master/cronUI.png)
 
 ## Features
 
