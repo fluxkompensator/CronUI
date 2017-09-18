@@ -16,6 +16,8 @@ CronUI is an web-based tool based on Python Flask, jquery and bootstrap to edit,
 * Flask
 * Flask-JSGlue
 
+* All used Crontabs (defined by prefix in crontab.cfg) need to be user editable, e.g.: chmod g+w /etc/cron.d/*_ctl and owned by user running the flask application e.g.: chown root:pi /etc/cron.d/*_ctl
+
 ## Installation
 
 * pip install Flask
