@@ -56,4 +56,4 @@ def crontabsave():
             	fo.write(line+"\n")
     	return(json.dumps({'success':True}), 200, {'ContentType':'application/json'})
     else:
-	return(json.dumps({'success':False}), 1, {'ContentType':'application/json'})
+	return(json.dumps({'success':False}), 400, {'ContentType':'application/json'})
