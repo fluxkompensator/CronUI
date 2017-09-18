@@ -16,7 +16,8 @@ CronUI is an web-based tool based on Python Flask, jquery and bootstrap to edit,
 * Flask
 * Flask-JSGlue
 
-* All used Crontabs (defined by prefix in crontab.cfg) need to be user editable, e.g.: chmod g+w /etc/cron.d/*_ctl and owned by user running the flask application e.g.: chown root:pi /etc/cron.d/*_ctl
+* All used Crontabs (defined by prefix in crontab.cfg) 
+* This program must be run as root
 
 ## Installation
 
@@ -30,13 +31,16 @@ CronUI is an web-based tool based on Python Flask, jquery and bootstrap to edit,
 
 * edit the file crontab.cfg to your needs
 
-* python -m flask run --host=0.0.0.0
+* export FLASK_DEBUG=0
+* export FLASK_APP="index.py"
+* sudo -E python -m flask run --host=0.0.0.0
 
 
 App will now run public on port 5000.
- * Serving Flask app "index"
- * Forcing debug mode on
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ All set up. Running in privileged mode.
+ Serving Flask app "index"
+ Forcing debug mode on
+ Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 
 ## License
 

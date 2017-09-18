@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    {% block head %}
-    <title>PI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url_for('.static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="{{url_for('.static', filename='style.css')}}">
-    <script src="{{url_for('.static', filename='js/jquery.js')}}"></script>
-    <script src="{{url_for('.static', filename='js/tether/dist/js/tether.min.js')}}"></script>
-    {{ JSGlue.include() }}
-    {% endblock %}
-  </head>
-  <body>
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse mb-4">
-      <div class="container">
-        <ul class="navbar-nav mr-auto">
-          <!--<li role="presentation" class="nav-item"><a class="nav-link" href="index">Index</a></li>-->
-          <li role="presentation" class="nav-item"><a class="nav-link" href="crontab">crontab</a></li>
-          <!--<li role="presentation" class="nav-item"><a class="nav-link" href="control">control</a></li>-->
-        </ul>
-      </div>
-    </nav>
+{% extends "layout.html" %}
+{% block content %}
     <div class="container-fluid">
       <div class="row">
       {% for item in lines %}
@@ -47,8 +26,5 @@
       {% endfor %}
       </div>
     </div>
-    <script src="{{url_for('.static', filename='bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{url_for('.static', filename='js/custom.js')}}"></script>
-  </body>
-</html>
+{% endblock %}
 
