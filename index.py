@@ -14,6 +14,7 @@ from flask_jsglue import JSGlue
 import ConfigParser
 import json
 import os
+import re
 
 # start app, inject modules
 app = Flask(__name__)
@@ -46,10 +47,25 @@ def readcron():
         pass
     return "Unable to read file"
 
-# temp function for input validation
+# input validation of cron time format 
+# https://gist.github.com/harshithjv/c58f0dfce0656cf94c8c
 def validateCron(cronEntry):
-    print(cronEntry)
-    pass
+    cron = cronEntry.split(" ")[0:5]
+    cron[0] = cron[0].lstrip("#")
+    validate_crontab_time_format_regex = re.compile(\
+        "{0}\s+{1}\s+{2}\s+{3}\s+{4}".format(\
+            "(?P<minute>\*|[0-5]?\d)",\
+            "(?P<hour>\*|[01]?\d|2[0-3])",\
+            "(?P<day>\*|0?[1-9]|[12]\d|3[01])",\
+            "(?P<month>\*|0?[1-9]|1[012])",\
+            "(?P<day_of_week>\*|[0-6](\-[0-6])?)"\
+        ) # end of str.format()
+    ) # end of re.compile()
+    if validate_crontab_time_format_regex.match(" ".join(cron)) == None:
+        return(False)
+    else:
+        return(True)
+
 
 # root site 
 @app.route('/')
@@ -72,9 +88,14 @@ def crontabsave():
         app.logger.info('%s', targetFile)
         for i in data:
             app.logger.info('%s', i)
+            for line in data:
+                if validateCron(line):
+                    continue
+                else:
+                    return(json.dumps({'ERROR':"Wrong cron format: "+line}), 400, {'ContentType':'application/json'})
             with open(cronDir+targetFile,"wb") as fo:
                 for line in reversed(data):
                     fo.write(line+"\n")
         return(json.dumps({'success':True}), 200, {'ContentType':'application/json'})
     else:
-        return(json.dumps({'success':False}), 400, {'ContentType':'application/json'})
+        return(json.dumps({'ERROR':"Writing file."}), 400, {'ContentType':'application/json'})

@@ -62,8 +62,8 @@ $(document).ready(function(){
                 success: function(response) {
                     alert("Crontab "+cronTitle+" saved.");
                 },
-                error: function(error) {
-                    alert("Crontab "+cronTitle+" save failed!");
+                error: function(result, status, err) {
+                    alert("Crontab "+cronTitle+" save failed: \n"+result.responseText);
                 }
             });
         });
