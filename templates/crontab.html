@@ -11,18 +11,18 @@
             {{ line }}
           </a>
           <input type="text" class="cron-edit" style="display:none"/>
-	  <button class="cron-edit cron-delete btn btn-sm btn-warning" style="display:none">Delete entry</button>
+      <button class="cron-edit cron-delete btn btn-sm btn-warning" style="display:none">Delete entry</button>
         {% else %}
           <a href="#" class="list-group-item list-group-item-success cron-entry">
             {{ line }}
           </a>
           <input type="text" class="cron-edit" style="display:none"/>
-	  <button class="cron-edit cron-delete btn btn-sm btn-warning" style="display:none">Delete entry</button>
+      <button class="cron-edit cron-delete btn btn-sm btn-warning" style="display:none">Delete entry</button>
         {% endif %}
         {% endfor %}
           <button class="btn btn-info btn-sm add-entry-btn" type="button">Add</button>
           <button class="btn btn-danger btn-sm save-entry-btn" type="button">Save crontab</button>
-	</div>
+    </div>
       {% endfor %}
       </div>
     </div>
