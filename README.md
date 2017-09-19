@@ -1,7 +1,7 @@
 CronUI
 ======
 
-CronUI is an web-based tool based on Python Flask, jquery and bootstrap to edit, delete and create cron jobs.
+CronUI is an web-based tool based on Python Flask, jquery and bootstrap to view, edit, delete and create cron jobs.
 ![alt text](https://raw.githubusercontent.com/fluxkompensator/CronUI/master/cronUI.png)
 
 ## Features
@@ -22,26 +22,27 @@ CronUI is an web-based tool based on Python Flask, jquery and bootstrap to edit,
 
 ## Installation
 
-* pip install Flask
-* pip install Flask-JSGlue
+```
+pip install Flask
+pip install Flask-JSGlue
 
-* git clone ...
+git clone ...
 
-* cd CronUI
-* export FLASK_APP=index.py
+cd CronUI
+export FLASK_APP=index.py
+```
+edit the file crontab.cfg to your needs with your favorite editor, `vim`, `nano`, ...
+```
+export FLASK_DEBUG=0
+export FLASK_APP="index.py"
+sudo -E python -m flask run --host=0.0.0.0
+```
 
-* edit the file crontab.cfg to your needs
-
-* export FLASK_DEBUG=0
-* export FLASK_APP="index.py"
-* sudo -E python -m flask run --host=0.0.0.0
-
-
-App will now run public on port 5000.
- All set up. Running in privileged mode.
- Serving Flask app "index"
- Forcing debug mode on
- Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+> App will now run public on port 5000.
+> All set up. Running in privileged mode.
+> Serving Flask app "index"
+> Forcing debug mode on
+> Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 
 ## License
 
