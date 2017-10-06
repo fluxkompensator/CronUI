@@ -88,11 +88,11 @@ def crontabsave():
         app.logger.info('%s', targetFile)
         for i in data:
             app.logger.info('%s', i)
-            for line in data:
-                if validateCron(line):
-                    continue
-                else:
-                    return(json.dumps({'ERROR':"Wrong cron format: "+line}), 400, {'ContentType':'application/json'})
+            #for line in data:
+            #    if validateCron(line):
+            #        continue
+            #    else:
+            #        return(json.dumps({'ERROR':"Wrong cron format: "+line}), 400, {'ContentType':'application/json'})
             with open(cronDir+targetFile,"wb") as fo:
                 for line in reversed(data):
                     fo.write(line+"\n")
